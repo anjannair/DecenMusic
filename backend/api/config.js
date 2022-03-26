@@ -8,8 +8,14 @@ module.exports = {
 		string: process.env.DB_STRING,
 		cleanInterval: 1000 * 60 * 5, // 5 min
 	},
+	ipfs: {
+		host: "192.168.137.220",
+		port1: 5001,
+		protocol: "http",
+		port2: 8080,
+	},
 	songs: {
-		tags: ['rock', 'pop', 'classical', 'instrumental', 'heavy metal'],
+		tags: ["rock", "pop", "classical", "instrumental", "heavy metal"],
 	},
 	mail: {
 		credentials: {
