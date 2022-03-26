@@ -13,6 +13,8 @@ import config from "../config";
 
 function Home() {
 	const [user, setUser] = useState(false);
+	const [topMusic, setTopMusic] = useState([]);
+	const [recMusic, setRecMusic] = useState([]);
 
 	useEffect(() => {
 		if (localStorage.token) {
@@ -22,8 +24,18 @@ function Home() {
 				})
 				.then((res) => {
 					setUser(res.data);
+					axios
+						.get(`${config.api_location}/song/reccomended`, {
+							headers: { token: localStorage.token },
+						})
+						.then((res) => {
+							setRecMusic(res.data);
+						});
 				});
 		}
+		axios.get(`${config.api_location}/song/top`).then((res) => {
+			setTopMusic(res.data);
+		});
 	}, []);
 
 	return (
@@ -43,8 +55,21 @@ function Home() {
 					</div>
 
 					<div className={styles.SectionCards}>
-						{PLAYLIST.map((item) => {
-							return <PlaylistCardS key={item.title} data={item} />;
+						{topMusic.map((item) => {
+							return (
+								<PlaylistCardS
+									key={item.title}
+									data={{
+										type: "albüm",
+										title: item.title,
+										link: item._id,
+										imgUrl: `${config.ipfs_location}/ipfs/${item.thumbnailHash}`,
+										hoverColor: "rgb(224, 112, 16)",
+										artist: item.artist,
+										playlistBg: "rgb(224, 112, 16)",
+									}}
+								/>
+							);
 						})}
 					</div>
 				</section>
@@ -52,12 +77,25 @@ function Home() {
 				{user ? (
 					<section>
 						<div className={styles.SectionTitle}>
-							<TitleM>Recently Played</TitleM>
+							<TitleM>Reccomended</TitleM>
 						</div>
 
 						<div className={styles.SectionCardsMedium}>
-							{PLAYLIST.slice(0, 6).map((item) => {
-								return <PlaylistCardM key={item.title} data={item} />;
+							{recMusic.slice(0, 6).map((item) => {
+								return (
+									<PlaylistCardM
+										key={item.title}
+										data={{
+											type: "albüm",
+											title: item.title,
+											link: item._id,
+											imgUrl: `${config.ipfs_location}/ipfs/${item.thumbnailHash}`,
+											hoverColor: "rgb(224, 112, 16)",
+											artist: `❤️${item.likes.length}`,
+											playlistBg: "rgb(224, 112, 16)",
+										}}
+									/>
+								);
 							})}
 						</div>
 					</section>
