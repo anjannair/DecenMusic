@@ -10,15 +10,10 @@ body {
   font-weight: 400;
   font-family: "Fira Sans", sans-serif;
 }
-/* 
 container {
   display: flex;
   justify-content: center;
-} */
-
-/* .form-control {
-  height: 200px;
-} */
+}
 .navbar-nav-ml-auto {
   display: flex;
   justify-content: center;

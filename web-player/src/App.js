@@ -1,4 +1,5 @@
 import React, { useState, useEffect  } from 'react';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router,
   Switch,
   Route
@@ -12,6 +13,9 @@ import Search from './pages/search';
 import Library from './pages/library';
 import PlaylistPage from './pages/playlist';
 import Dashboard from './pages/dashboard';
+import SignUp from './pages/signup';
+import Login from './pages/login';
+import './index.css';
 
 import CONST from './constants/index';
 import { PLAYLIST } from './data/index';
@@ -42,6 +46,20 @@ function App() {
             </Route>
             <Route path="/dashboard">
                 <Dashboard />
+            </Route>
+            <Route path="/login">
+              <div className="auth-wrapper">
+                <div className="auth-inner">
+                  <Login/>
+              </div>
+              </div>
+            </Route>
+            <Route>
+            <div className="auth-wrapper">
+                <div className="auth-inner">
+                <SignUp/>
+                </div>
+                </div>
             </Route>
           </Switch>
           <Footer />
