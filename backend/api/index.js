@@ -2,6 +2,7 @@ const express = require("express");
 const config = require("./config");
 const mongoose = require("mongoose");
 const fileUpload = require("express-fileupload");
+const cors = require("cors");
 const authMiddleware = require("./middlewares/auth");
 const tokenMiddleware = require("./middlewares/token");
 const cleanDB = require("./utils/cleanDB");
@@ -19,6 +20,7 @@ app.use(
 // custom middlewares
 app.use(authMiddleware);
 app.use(tokenMiddleware);
+app.use(cors({ exposedHeaders: "token" }));
 
 // connect to db
 mongoose.connect(config.db.string, (err) => {
