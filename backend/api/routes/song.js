@@ -59,6 +59,14 @@ router.get("/reccomended", authOnlyMiddleware([]), async (req, res) => {
 	res.json(songs);
 });
 
+// get top
+router.get("/top", async (req, res) => {
+	let songs = await Song.find();
+	songs.sort((a, b) => a.likes.length - b.likes.length);
+
+	res.json(songs);
+});
+
 // get song by id
 router.get("/id/:id", async (req, res) => {
 	const song = await Song.findById(req.params.id);
