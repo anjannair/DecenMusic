@@ -19,6 +19,8 @@ function validatePassword(password) {
 router.post("/register", async (req, res) => {
 	const user = req.body;
 
+	console.log(user);
+
 	// missing details
 	if (!user) return res.status(400).json({ msg: "missing user in body" });
 	if (!(user.username && user.password && user.email))
