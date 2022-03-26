@@ -1,1 +1,1 @@
-# hypersonic-offer-manager
+# Canary - DecenMusic
