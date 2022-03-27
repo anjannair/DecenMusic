@@ -6,10 +6,16 @@ import { SEARCHCARDS } from "../data/index";
 import styles from "./search.module.css";
 import axios from "axios";
 import config from "../config";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Search() {
 	const [results, setResults] = useState([]);
+
+	useEffect(() => {
+		axios
+			.get(`${config.api_location}/song`)
+			.then((res) => setResults(res.data));
+	}, []);
 
 	return (
 		<div className={styles.SearchPage}>
@@ -17,6 +23,7 @@ function Search() {
 
 			<div className={styles.Search}>
 				<input
+                    autoFocus
 					type="text"
 					placeholder="search"
 					onChange={(e) => {
