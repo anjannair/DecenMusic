@@ -29,7 +29,7 @@ export const MENU = [
 export const PLAYLISTBTN = [
     {
       title: 'Upload Songs',
-      path: '/',
+      path: '/upload',
       ImgName: 'createPlaylist',
     },
 ]
