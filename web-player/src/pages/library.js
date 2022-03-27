@@ -21,18 +21,19 @@ function Library() {
 				})
 				.then((res) => {
 					setUser(res.data);
-					axios
-						.get(`${config.api_location}/song`, {
-							headers: { token: localStorage.token },
-						})
-						.then((res) => {
-							setUserMusic(
-								res.data.filter((e) => String(e.author) == String(user._id))
-							);
-						});
 				});
 		}
 	}, []);
+
+	useEffect(() => {
+		axios
+			.get(`${config.api_location}/song`, {
+				headers: { token: localStorage.token },
+			})
+			.then((res) => {
+				setUserMusic(res.data.filter((e) => e.artist === user._id));
+			});
+	}, [user]);
 
 	return (
 		<div className={styles.LibPage}>
