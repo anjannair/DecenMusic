@@ -39,6 +39,7 @@ function Search() {
 								cardData={{
 									bgcolor: "rgb(0,0,0)",
 									title: card.title,
+									id: card._id,
 									imgurl: `${config.ipfs_location}/ipfs/${card.thumbnailHash}`,
 								}}
 							/>
