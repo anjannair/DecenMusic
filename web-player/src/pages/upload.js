@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import config from "../config";
+import styles from "./upload.module.css";
 
 function Upload() {
 	const [user, setUser] = useState(false);
@@ -21,7 +22,8 @@ function Upload() {
 		}
 	}, []);
 	return (
-		<form
+		<div className= {styles.form1}>
+		<form className={styles.form2}
 			onSubmit={(e) => {
 				e.preventDefault();
 
@@ -73,22 +75,28 @@ function Upload() {
 					});
 			}}
 		>
-			<input required type="text" name="title" placeholder="title" />
-			<input required id="file" type="file" name="file" placeholder="file" />
+			<label className = {styles.label}><h5>Title</h5></label>
+			<input className = {styles.input} required type="text" name="title" placeholder="title" />
+			{/* <br></br> */}
+			<input required id="file" type="file" name="file" placeholder="file"  />
+			<label className = {styles.label}><h5>Thumbnail</h5></label>
 			<input
 				required
 				id="thumbnail"
 				type="file"
 				name="thumbnail"
 				placeholder="thumbnail"
+				className = {styles.input}
 			/>
-			<select name="tag" required>
+			<label className = {styles.label}><h5>Category</h5></label>
+			<select className = {styles.input} name="tag" required>
 				{tags.map((tag) => (
 					<option value={tag}>{tag}</option>
 				))}
 			</select>
-			<input type="submit" />
+			<input type="submit" id = "submit" className = {styles.submit} />
 		</form>
+		</div>
 	);
 }
 
