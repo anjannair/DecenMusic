@@ -54,7 +54,7 @@ router.get("/reccomended", authOnlyMiddleware([]), async (req, res) => {
 
 	if (max > 0) songs = songs.filter((song) => song.tag === favTag);
 
-	songs.sort((a, b) => a.likes.length - b.likes.length);
+	songs.sort((a, b) => b.likes.length - a.likes.length);
 
 	res.json(songs);
 });
@@ -62,7 +62,7 @@ router.get("/reccomended", authOnlyMiddleware([]), async (req, res) => {
 // get top
 router.get("/top", async (req, res) => {
 	let songs = await Song.find();
-	songs.sort((a, b) => a.likes.length - b.likes.length);
+	songs.sort((a, b) => b.views - a.views);
 
 	res.json(songs);
 });
