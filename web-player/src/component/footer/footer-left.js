@@ -8,14 +8,14 @@ import styles from "./footer-left.module.css";
 function FooterLeft(props){
     return (
         <div className={styles.footerLeft}>
-            <ImgBox 
+            {/* <ImgBox 
                 trackData={props.trackData}
             />
             <SongDetails 
                 trackData={props.trackData}
             />
             <IconButton icon={<Icons.Like />} activeicon={<Icons.LikeActive />}/>
-            <IconButton icon={<Icons.Corner />} activeicon={<Icons.Corner />}/>
+            <IconButton icon={<Icons.Corner />} activeicon={<Icons.Corner />}/> */}
         </div>
     );
 }
