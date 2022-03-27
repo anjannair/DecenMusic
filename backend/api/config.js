@@ -9,7 +9,7 @@ module.exports = {
 		cleanInterval: 1000 * 60 * 5, // 5 min
 	},
 	ipfs: {
-		host: "192.168.137.220",
+		host: "192.168.98.242",
 		port1: 5001,
 		protocol: "http",
 		port2: 8080,

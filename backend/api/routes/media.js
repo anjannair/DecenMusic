@@ -27,6 +27,7 @@ router.post("/upload", async (req, res) => {
 			warpWithDirectory: false,
 			progress: (prog) => console.log(`Saved :${prog}`),
 		};
+		console.log("adding to ipfs");
 		let result = await ipfs.add(uploadedFile.data, options);
 		result.uri = `${config.ipfs.protocol}://${config.ipfs.host}:${config.ipfs.port2}/ipfs/${result.path}`;
 		res.json(result);
