@@ -17,15 +17,6 @@ module.exports = {
 	songs: {
 		tags: ["rock", "pop", "classical", "instrumental", "heavy metal"],
 	},
-	mail: {
-		credentials: {
-			email: process.env.EMAIL,
-			clientId: process.env.EMAIL_CLIENT_ID,
-			clientSecret: process.env.EMAIL_CLIENT_SECRET,
-			redirectURI: process.env.EMAIL_REDIRECT_URI,
-			refreshToken: process.env.EMAIL_REFRESH_TOKEN,
-		},
-	},
 	auth: {
 		requiresEmailVerification: false,
 		roles: {
